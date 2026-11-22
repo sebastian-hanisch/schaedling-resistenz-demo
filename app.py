@@ -165,7 +165,7 @@ with st.sidebar:
     st.markdown("**Planung**")
     st.slider("Planungshorizont der Abstimmung (Jahre)", *bounds("horizon_slider"), key="horizon_slider",
               help="Über so viele Jahre werden die Regeln abgestimmt (außer den Zeilen „1 Jahr“ und „5 Jahre“); ausgewertet wird immer über 20 Jahre.")
-    st.slider("Zinsfaktor je Jahr", *bounds("disc_slider"), key="disc_slider", step=0.05,
+    st.slider("Abzinsungsfaktor je Jahr", *bounds("disc_slider"), key="disc_slider", step=0.05,
               help="Jedes spätere Jahr zählt mit diesem Faktor weniger (1 = keine Abzinsung); wirkt auf Abstimmung und Auswertung.")
     st.slider("Refugium-Anteil q", *bounds("q_slider"), key="q_slider", step=0.05,
               help="Flächenanteil, der nie gespritzt wird. Gilt nur für die zwei Refugium-Zeilen der Tabelle; alle anderen Regeln laufen ohne Refugium.")
@@ -313,7 +313,7 @@ with tab_view:
     st.plotly_chart(V.fig_profile(S_prof, tot_prof, nie_prof), width="stretch", key="profile_chart")
     st.caption(f"{total_label} in Abhängigkeit von der Schwelle, {min(paths, C.LIVE_PROFILE_PATHS)} Pfade, Zufalls-Seed {seed}; rechts „fast nie spritzen“.")
 
-    st.markdown("**Referenz: volle Voraussicht (Rückwärtsrechnung)**")
+    st.markdown("**Referenz: volle Voraussicht (Rückwärtsrechnung, englisch Dynamic Programming)**")
     dpw = None
     for name, sc in pre.items():
         s0 = sc["settings"]
@@ -397,7 +397,7 @@ else:
 pdf_bytes = build_pdf(
     {"Resistenzgrad": settings["phi"], "Fitnesskosten": settings["cost"], "Abtötungsrate": settings["kill"], "Zuwanderung": settings["m"], "Spritzkosten": settings["spray"],
      "Kontrollkosten": settings["scout"], "Messrauschen": settings["meas"], "Kreuzresistenz": settings["cross"], "Doppelresistenz (Zehnerpotenz)": settings["rr"],
-     "Refugium": settings["q"], "Horizont": settings["horizon"], "Zinsfaktor": settings["disc"], "Zufalls-Seed": seed, "Pfade": paths},
+     "Refugium": settings["q"], "Horizont": settings["horizon"], "Abzinsungsfaktor": settings["disc"], "Zufalls-Seed": seed, "Pfade": paths},
     rows, source_text.replace("**", ""), verdict_texts,
 )
 st.download_button("📄 Ergebnis als PDF", data=pdf_bytes, file_name="schaedlingsbekaempfung-resistenz.pdf", mime="application/pdf", key="pdf_download")
@@ -424,7 +424,7 @@ with st.expander("📐 Mathematische Formulierung"):
 | $b$, $h$, $W$ | größter Verlust, Halbsättigung des Schadens, Wochen je Saison |
 | $c_s$, $c_k$, $q$ | Kosten einer Spritzung, einer Kontrolle, Refugium-Anteil |
 | $\nu$, $m$, $\mu_y$, $\pi_g$ | Überwinterung, Zuwanderung, Streufaktor der Zuwanderung, Genotypanteile der Zuwanderer |
-| $\delta$, $H$ | Zinsfaktor je Jahr, Planungshorizont der Abstimmung |
+| $\delta$, $H$ | Abzinsungsfaktor je Jahr, Planungshorizont der Abstimmung |
 | $k$, $w_0$, $S$, $v$ | Kalender: Abstand und Start; Schwelle und Kontrollabstand |
 
 [Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/schaedling-resistenz-erklaert.html#fachleute)

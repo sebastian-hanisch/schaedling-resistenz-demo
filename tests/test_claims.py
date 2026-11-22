@@ -301,7 +301,7 @@ def test_modelldetails_der_readme_stehen_im_code():
     readme = (ROOT / "README.md").read_text(encoding="utf-8")
     for text in ("π_SS = (1 − p)², π_RS = π_SR = p (1 − p), π_RR = p²", "(Kosten 4 · (1 − q))", "σ_w = 0,15, σ_m = 0,5", "Median 1, ohne Ausgleich des Mittelwerts", "101 Kalender", "225 Kombinationen",
                  "{1, 2, 3, 4, 6, 8, 12, 20}", "jeder zweite Schwellenwert (18 Werte)", "von −9 bis 0,7 in Schritten von 0,05", "von −8 bis 0,6 in Schritten von 0,1", "Der Wert nach Woche 520 ist 0",
-                 "Pfadzahl 50 bis 1000 (200)", "Zufalls-Seed 0 bis 9999 (22)", "Refugium-Anteil q 0 bis 0,5 (0,2)", "Zinsfaktor 0,5 bis 1 (1)", "Planungshorizont 1 bis 20 Jahre (20)"):
+                 "Pfadzahl 50 bis 1000 (200)", "Zufalls-Seed 0 bis 9999 (22)", "Refugium-Anteil q 0 bis 0,5 (0,2)", "Abzinsungsfaktor 0,5 bis 1 (1)", "Planungshorizont 1 bis 20 Jahre (20)"):
         assert text in readme, text
     # Reglerbereiche und Standardwerte
     assert [(C.PHI_MIN, C.PHI_MAX, C.DEFAULT_PHI), (C.COST_MIN, C.COST_MAX, C.DEFAULT_COST), (C.KILL_MIN, C.KILL_MAX, C.DEFAULT_KILL), (C.CROSS_MIN, C.CROSS_MAX, C.DEFAULT_CROSS),
