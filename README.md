@@ -1,7 +1,6 @@
 # Schädlingsbekämpfung: Wirksamkeit ist ein Vorrat – Streamlit-Demo
 
-<!-- TODO nach dem Deploy: direkt hierher den Live-Link setzen (Leerzeile davor und danach):
-**[→ Demo live ausprobieren](https://sebastianhanisch-schaedling-resistenz-demo.streamlit.app/)** -->
+**[→ Demo live ausprobieren](https://sebastianhanisch-schaedling-resistenz-demo.streamlit.app/)**
 
 Fall-Demo für die Website „Sebastian Hanisch – Operations Research und Machine Learning“ (`demos.html`). Eine Saison hat 26 Wochen, die Demo rechnet 20 Jahre. Vier Genotypen vermehren sich klonal (anfällig, resistent gegen Wirkstoff A, gegen B, gegen beide; Wachstum nach Ricker, Schaden gesättigt nach Holling Typ II); eine Spritzung tötet Anfällige zum Anteil 0,9 und Resistente nur zum Anteil 0,9 · (1 − Resistenzgrad). Resistente bleiben übrig und vermehren sich, ihr Wachstum kostet aber etwas (Fitnesskosten), und jeden Winter kommen Zuwanderer. Verglichen werden **Kalender**, **Schwelle** (gemessene Dichte, mit Messrauschen und Kontrollkosten), **Schwelle mit Obergrenze**, **Pausenkalender** (Stöße nur in jedem zweiten Jahr), **Wirkstoffwechsel** (A und B je Jahr oder je Spritzung), **A dann B** und **Refugium**; als Referenz die **Rückwärtsrechnung** (dynamische Optimierung) auf der deterministischen Instanz.
 
